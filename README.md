@@ -9,7 +9,7 @@ App conceito para implementar os conceitos básicos de CoreData em Swift.
 Consiste em um app para registrar as avaliações de usuários dos eventos CocoaHeads.
 Uma tableview resgatando os dados do CoreData e uma interface para registro dos dados.
 
-Vídeo de UI em ação: 
+Vídeo de UI em ação: http://youtu.be/sUhPQI8GerY
 
 O Objetivo do Swift Dojo é conhecer a nova linguage de programação da Apple com um exemplo prático e compartilhando conhecimentos.
 
