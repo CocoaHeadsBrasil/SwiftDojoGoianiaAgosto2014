@@ -13,6 +13,8 @@
 		80BFAF7B199F8A6E00781FCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80BFAF79199F8A6E00781FCD /* Main.storyboard */; };
 		80BFAF7D199F8A6E00781FCD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80BFAF7C199F8A6E00781FCD /* Images.xcassets */; };
 		80BFAF89199F8A6E00781FCD /* CocoaQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAF88199F8A6E00781FCD /* CocoaQuizTests.swift */; };
+		80BFAF93199F9A0500781FCD /* OpinioesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */; };
+		80BFAF95199F9A3700781FCD /* OpiniaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		80BFAF82199F8A6E00781FCD /* CocoaQuizTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CocoaQuizTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80BFAF87199F8A6E00781FCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80BFAF88199F8A6E00781FCD /* CocoaQuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaQuizTests.swift; sourceTree = "<group>"; };
+		80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpinioesTableViewController.swift; sourceTree = "<group>"; };
+		80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpiniaoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				80BFAF7C199F8A6E00781FCD /* Images.xcassets */,
 				80BFAF74199F8A6E00781FCD /* CocoaQuiz.xcdatamodeld */,
 				80BFAF70199F8A6E00781FCD /* Supporting Files */,
+				80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */,
+				80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */,
 			);
 			path = CocoaQuiz;
 			sourceTree = "<group>";
@@ -214,6 +220,8 @@
 				80BFAF78199F8A6E00781FCD /* ViewController.swift in Sources */,
 				80BFAF76199F8A6E00781FCD /* CocoaQuiz.xcdatamodeld in Sources */,
 				80BFAF73199F8A6E00781FCD /* AppDelegate.swift in Sources */,
+				80BFAF95199F9A3700781FCD /* OpiniaoViewController.swift in Sources */,
+				80BFAF93199F9A0500781FCD /* OpinioesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
