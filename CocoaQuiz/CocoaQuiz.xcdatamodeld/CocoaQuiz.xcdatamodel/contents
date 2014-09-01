@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<<<<<<< HEAD
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.14" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Opiniao" representedClassName="CocoaQuiz.Opiniao" syncable="YES">
-=======
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6220.8" systemVersion="14A314h" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Opiniao" syncable="YES">
->>>>>>> 8e68123a3bf8f4a65bf9310d16be20a5934ee8d3
         <attribute name="nota" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="primeiroNome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sobreNome" optional="YES" attributeType="String" syncable="YES"/>
