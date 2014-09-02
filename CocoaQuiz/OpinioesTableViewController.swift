@@ -1,3 +1,4 @@
+
 //
 //  OpinioesTableViewController.swift
 //  CocoaQuiz
@@ -9,25 +10,20 @@
 import UIKit
 import CoreData
 
-class OpinioesTableViewController: UITableViewController {
+
+class OpinioesTableViewController: UITableViewController,NSFetchedResultsControllerDelegate {
     
-    var opinioes = []
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var appDelegate = (UIApplication.sharedApplication().delegate) as AppDelegate
+        fetchedResultController = getFetchedResultController()
+        fetchedResultController.delegate = self
+        fetchedResultController.performFetch(nil)
         
-        var context = appDelegate.managedObjectContext!
-        
-        var request = NSFetchRequest(entityName: "Opiniao")
-        opinioes = context.executeFetchRequest(request, error:nil)
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,40 +31,12 @@ class OpinioesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 1
-    }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return opinioes.count
-    }
 
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
-
-        var opiniao = opinioes[indexPath.row] as NSManagedObject
-        cell.textLabel.text = opiniao.valueForKey("primeiroNome") as String
-        
-        var nota = opiniao.valueForKey("nota") as Float
-        if (nota < 4) {// Nota menor que 4
-            cell.detailTextLabel.text = "😡"
-        }
-        else if (nota > 6) {// Nota maior que 6
-            cell.detailTextLabel.text = "😄"
-        }
-        else { // Nota entre 4 e 6
-            cell.detailTextLabel.text = "😒"
-        }
-
-        return cell
-    }
+    
     
 
     /*
@@ -89,7 +57,7 @@ class OpinioesTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+*/
 
     /*
     // Override to support rearranging the table view.
@@ -106,14 +74,72 @@ class OpinioesTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "editarSegue" { //adicionarSegue
+            let cell = sender as UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            
+            var opiniao:Opiniao = fetchedResultController.objectAtIndexPath(indexPath) as Opiniao
+            (segue.destinationViewController as OpiniaoViewController).opiniao = opiniao
+        }
+        
     }
-    */
+    
+    func getFetchedResultController() -> NSFetchedResultsController {
+        fetchedResultController = NSFetchedResultsController(fetchRequest: taskFetchRequest(), managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchedResultController
+    }
+    
+    func taskFetchRequest() -> NSFetchRequest {
+        let fetchRequest = NSFetchRequest(entityName: "Opiniao")
+        let sortDescriptor = NSSortDescriptor(key: "timeStamp", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+        return fetchedResultController.sections.count
+    }
+    
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultController.sections[section].numberOfObjects
+    }
+    
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        var opiniao = fetchedResultController.objectAtIndexPath(indexPath) as Opiniao
+        
+        cell.textLabel.text = (opiniao.valueForKey("primeiroNome") as String) + " " + (opiniao.valueForKey("sobreNome") as String)
+        
+        var nota = opiniao.valueForKey("nota") as Float
+        if (nota < 4) {// Nota menor que 4
+            cell.detailTextLabel.text = "😡 \(nota)"
+        }
+        else if (nota > 6) {// Nota maior que 6
+            cell.detailTextLabel.text = "😄 \(nota)"
+        }
+        else { // Nota entre 4 e 6
+            cell.detailTextLabel.text = "😒 \(nota)"
+        }
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        let managedObject:NSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as NSManagedObject
+        managedObjectContext?.deleteObject(managedObject)
+        managedObjectContext?.save(nil)
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
+        tableView.reloadData()
+    }
+
 
 }

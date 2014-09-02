@@ -15,6 +15,7 @@
 		80BFAF89199F8A6E00781FCD /* CocoaQuizTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAF88199F8A6E00781FCD /* CocoaQuizTests.swift */; };
 		80BFAF93199F9A0500781FCD /* OpinioesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */; };
 		80BFAF95199F9A3700781FCD /* OpiniaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */; };
+		A2F314D819ABCF44003BFA94 /* Opiniao.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F314D719ABCF44003BFA94 /* Opiniao.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		80BFAF88199F8A6E00781FCD /* CocoaQuizTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocoaQuizTests.swift; sourceTree = "<group>"; };
 		80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpinioesTableViewController.swift; sourceTree = "<group>"; };
 		80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpiniaoViewController.swift; sourceTree = "<group>"; };
+		A26BBEEB19A52D440068B0D1 /* CocoaQuiz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CocoaQuiz-Bridging-Header.h"; sourceTree = "<group>"; };
+		A2F314D719ABCF44003BFA94 /* Opiniao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Opiniao.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +86,14 @@
 			children = (
 				80BFAF72199F8A6E00781FCD /* AppDelegate.swift */,
 				80BFAF77199F8A6E00781FCD /* ViewController.swift */,
+				80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */,
+				80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */,
+				A2F314D719ABCF44003BFA94 /* Opiniao.swift */,
 				80BFAF79199F8A6E00781FCD /* Main.storyboard */,
 				80BFAF7C199F8A6E00781FCD /* Images.xcassets */,
 				80BFAF74199F8A6E00781FCD /* CocoaQuiz.xcdatamodeld */,
 				80BFAF70199F8A6E00781FCD /* Supporting Files */,
-				80BFAF92199F9A0500781FCD /* OpinioesTableViewController.swift */,
-				80BFAF94199F9A3700781FCD /* OpiniaoViewController.swift */,
+				A26BBEEB19A52D440068B0D1 /* CocoaQuiz-Bridging-Header.h */,
 			);
 			path = CocoaQuiz;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 				TargetAttributes = {
 					80BFAF6C199F8A6E00781FCD = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = S27XNS3682;
 					};
 					80BFAF81199F8A6E00781FCD = {
 						CreatedOnToolsVersion = 6.0;
@@ -220,6 +226,7 @@
 				80BFAF78199F8A6E00781FCD /* ViewController.swift in Sources */,
 				80BFAF76199F8A6E00781FCD /* CocoaQuiz.xcdatamodeld in Sources */,
 				80BFAF73199F8A6E00781FCD /* AppDelegate.swift in Sources */,
+				A2F314D819ABCF44003BFA94 /* Opiniao.swift in Sources */,
 				80BFAF95199F9A3700781FCD /* OpiniaoViewController.swift in Sources */,
 				80BFAF93199F9A0500781FCD /* OpinioesTableViewController.swift in Sources */,
 			);
@@ -337,9 +344,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CocoaQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CocoaQuiz/CocoaQuiz-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -348,9 +361,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CocoaQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CocoaQuiz/CocoaQuiz-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -407,6 +425,7 @@
 				80BFAF8E199F8A6E00781FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		80BFAF8F199F8A6E00781FCD /* Build configuration list for PBXNativeTarget "CocoaQuizTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +434,7 @@
 				80BFAF91199F8A6E00781FCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
