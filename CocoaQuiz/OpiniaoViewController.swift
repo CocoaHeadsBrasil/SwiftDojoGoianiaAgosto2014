@@ -72,7 +72,7 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
     func inserirNovaOpiniao() {
         let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext)
         let opiniao = Opiniao(entity: entityDescripition, insertIntoManagedObjectContext: managedObjectContext)
-        if ((txtPrimeiroNome.text.isEmpty) || (txtSobreNome.text.isEmpty))
+        if ((!txtPrimeiroNome.text.isEmpty) || (!txtSobreNome.text.isEmpty))
         {
             opiniao.primeiroNome = txtPrimeiroNome.text
             opiniao.sobreNome = txtSobreNome.text
@@ -80,9 +80,20 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
             opiniao.timeStamp = NSDate.date()
             //println(opiniao)
             self.managedObjectContext?.save(nil)
+        } else {
+            mensagemErroValidacao("Nome ou Sobrenome não prenchido.")
         }
         
         
+    }
+    
+    func mensagemErroValidacao(msg: String) {
+        var alert = UIAlertController(title: "Alerta", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            println("ok")
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func editarOpiniao() {
