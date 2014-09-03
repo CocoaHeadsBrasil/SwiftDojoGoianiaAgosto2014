@@ -72,13 +72,16 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
     func inserirNovaOpiniao() {
         let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext)
         let opiniao = Opiniao(entity: entityDescripition, insertIntoManagedObjectContext: managedObjectContext)
+        if ((txtPrimeiroNome.text.isEmpty) || (txtSobreNome.text.isEmpty))
+        {
+            opiniao.primeiroNome = txtPrimeiroNome.text
+            opiniao.sobreNome = txtSobreNome.text
+            opiniao.nota = sldNota.value
+            opiniao.timeStamp = NSDate.date()
+            //println(opiniao)
+            self.managedObjectContext?.save(nil)
+        }
         
-        opiniao.primeiroNome = txtPrimeiroNome.text
-        opiniao.sobreNome = txtSobreNome.text
-        opiniao.nota = sldNota.value
-        opiniao.timeStamp = NSDate.date()
-        //println(opiniao)
-        self.managedObjectContext?.save(nil)
         
     }
     
