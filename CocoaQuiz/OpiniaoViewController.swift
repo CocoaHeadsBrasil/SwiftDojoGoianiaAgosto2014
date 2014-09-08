@@ -70,10 +70,11 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
     }
     
     func inserirNovaOpiniao() {
-        let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext)
-        let opiniao = Opiniao(entity: entityDescripition, insertIntoManagedObjectContext: managedObjectContext)
+        
         if ((!txtPrimeiroNome.text.isEmpty) || (!txtSobreNome.text.isEmpty))
         {
+            let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext)
+            let opiniao = Opiniao(entity: entityDescripition, insertIntoManagedObjectContext: managedObjectContext)
             opiniao.primeiroNome = txtPrimeiroNome.text
             opiniao.sobreNome = txtSobreNome.text
             opiniao.nota = sldNota.value
@@ -83,7 +84,6 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
         } else {
             mensagemErroValidacao("Nome ou Sobrenome não prenchido.")
         }
-        
         
     }
     
@@ -104,6 +104,14 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
         managedObjectContext?.save(nil)
     }
     
-    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        if textField.tag == 0 {
+            self.view.viewWithTag(textField.tag+1)?.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
 
 }
