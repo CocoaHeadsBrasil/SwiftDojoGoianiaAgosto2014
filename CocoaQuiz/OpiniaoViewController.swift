@@ -74,7 +74,7 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
         if ((!txtPrimeiroNome.text.isEmpty) || (!txtSobreNome.text.isEmpty))
         {
             let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext!)
-            let opiniao = Opiniao(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+            let opiniao = Opiniao(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext?)
             opiniao.primeiroNome = txtPrimeiroNome.text
             opiniao.sobreNome = txtSobreNome.text
             opiniao.nota = sldNota.value
