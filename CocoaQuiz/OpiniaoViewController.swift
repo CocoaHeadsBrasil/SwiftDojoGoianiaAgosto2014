@@ -65,21 +65,35 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
         }
         
         
-        navigationController.popViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true)
         
     }
     
     func inserirNovaOpiniao() {
-        let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext)
-        let opiniao = Opiniao(entity: entityDescripition, insertIntoManagedObjectContext: managedObjectContext)
         
-        opiniao.primeiroNome = txtPrimeiroNome.text
-        opiniao.sobreNome = txtSobreNome.text
-        opiniao.nota = sldNota.value
-        opiniao.timeStamp = NSDate.date()
-        //println(opiniao)
-        self.managedObjectContext?.save(nil)
+        if ((!txtPrimeiroNome.text.isEmpty) || (!txtSobreNome.text.isEmpty))
+        {
+            let entityDescripition = NSEntityDescription.entityForName("Opiniao", inManagedObjectContext: managedObjectContext!)
+            let opiniao = Opiniao(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext?)
+            opiniao.primeiroNome = txtPrimeiroNome.text
+            opiniao.sobreNome = txtSobreNome.text
+            opiniao.nota = sldNota.value
+            opiniao.timeStamp = NSDate.date()
+            //println(opiniao)
+            self.managedObjectContext?.save(nil)
+        } else {
+            mensagemErroValidacao("Nome ou Sobrenome não prenchido.")
+        }
         
+    }
+    
+    func mensagemErroValidacao(msg: String) {
+        var alert = UIAlertController(title: "Alerta", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            println("ok")
+        }))
+        
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     func editarOpiniao() {
@@ -90,6 +104,14 @@ class OpiniaoViewController: UIViewController, UITextFieldDelegate, NSFetchedRes
         managedObjectContext?.save(nil)
     }
     
-    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        if textField.tag == 0 {
+            self.view.viewWithTag(textField.tag+1)?.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
 
 }
